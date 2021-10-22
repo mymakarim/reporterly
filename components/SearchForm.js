@@ -35,7 +35,7 @@ function SearchForm() {
         <input
           type='text'
           name='search'
-          placeholder='جستجو در هشتگ ها (#افغانستان)'
+          placeholder='Search Hashtags (#afghanistan)'
           onChange={(e) => inputHandler(e)}
           value={search}
           className='text-xs sm:text-sm md:text-base p-3 flex-grow border-2 border-gray-800 rounded-md block w-full sm:text-sm'

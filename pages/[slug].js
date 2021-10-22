@@ -18,8 +18,8 @@ function Page({ post }) {
         <NextSeo
           title={post.title.rendered}
           description={post.yoast_head_json.og_description}
-          canonical={`https://khabarnama.net/${post.slug}`}
-          titleTemplate='خبرنامه | %s'
+          canonical={`https://reporterly.net/${post.slug}`}
+          titleTemplate='Reporterly | %s'
           robotsProps={{
             maxSnippet: post.yoast_head_json.robots['max-snippet'],
             maxImagePreview: post.yoast_head_json.robots['max-image-preview'],
@@ -43,13 +43,13 @@ function Page({ post }) {
           openGraph={{
             title: post.yoast_head_json.og_title,
             description: post.yoast_head_json.og_description,
-            url: `https://khabarnama.net/${post.slug}`,
+            url: `https://reporterly.net/${post.slug}`,
             type: post.yoast_head_json.og_type,
             locale: post.yoast_head_json.og_locale,
             site_name: post.yoast_head_json.og_site_name,
             article: {
               publishedTime: post.yoast_head_json.article_published_time,
-              section: 'News',
+              section: 'Page',
               authors: [post.yoast_head_json.article_author]
             },
             images: [
@@ -68,12 +68,9 @@ function Page({ post }) {
             ]
           }}
           twitter={{
-            handle: '@khabarnamaaf',
-            site: '@khabarnamaaf',
+            handle: '@reporterlyaf',
+            site: '@reporterlyaf',
             cardType: 'summary_large_image'
-          }}
-          facebook={{
-            appId: '213017455829104'
           }}
         />
       )}
@@ -91,7 +88,7 @@ function Page({ post }) {
           <div
             className='text-gray-700 dark:text-gray-50 leading-8 single_content'
             dangerouslySetInnerHTML={{
-              __html: post.content.rendered.replace('old.khabarnama', 'khabarnama')
+              __html: post.content.rendered.replace('old.reporterly', 'reporterly')
             }}
           />
         </div>
@@ -123,9 +120,7 @@ export async function getStaticProps({ params }) {
   let args = '_embed=true'
   const { slug } = params
 
-  const pageRes = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/pages?${args}&slug=${encodeURI(slug)}`
-  )
+  const pageRes = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/pages?${args}&slug=${slug}`)
   const page = await pageRes.json()
   if (!page) {
     return {

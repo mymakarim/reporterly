@@ -2,44 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: sans;
-  src: url(/fonts/IRANSans_Bold.woff) format('woff');
-  font-weight: 600;
-  font-style: bold;
-}
-@font-face {
-  font-family: sans;
-  src: url(/fonts/IRANSans_Light.woff) format('woff');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: sans;
-  src: url(/fonts/IRANSans_Medi.woff) format('woff');
-  font-weight: 500;
-  font-style: normal;
-}
-
 body {
-  font-family: 'sans', sans-serif !important;
-  direction: rtl;
+  font-family: 'Poppins', sans-serif !important;
 }
 .newsfeed li:before {
   position: absolute;
-  right: 4px;
+  left: 4px;
   top: 0;
   content: '';
   height: 100%;
   width: 0;
-  border-right: 2px solid #d2cfc9;
+  border-left: 2px solid #d2cfc9;
 }
 
 .newsfeed li:after {
   position: absolute;
   top: 0;
-  right: -1px;
-  margin-right: 0px;
+  left: -1px;
+  margin-left: 0px;
   content: '';
   border: 2px solid #fff;
   border-radius: 50%;
@@ -53,14 +33,14 @@ body {
 }
 
 .newsfeed li:hover:after {
-  background-color: #3730a3;
+  background-color: red;
 }
 
 .single_content p {
   margin-bottom: 24px;
 }
 .single_content a {
-  color: blue;
+  color: red;
 }
 .single_content .wp-caption {
   float: left;

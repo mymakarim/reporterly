@@ -1,6 +1,6 @@
 {
-    "name": "خبرنامه",
-    "short_name": "خبرنامه",
+    "name": "reporterly",
+    "short_name": "reporterly",
     "display": "standalone",
     "orientation": "portrait",
     "theme_color": "#fff",

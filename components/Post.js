@@ -6,44 +6,39 @@ import SVGTag from './../components/SVG/SVGTag'
 import { FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 'react-share'
 import { FacebookIcon, LinkedinIcon, TwitterIcon } from 'react-share'
 import moment from 'moment'
-import 'moment/locale/fa'
 
 function Post({ post }) {
-  let date = post.date_gmt.split('-')
-  let year = date[0]
-  let month = date[1]
-  let day = date[2].substr(0, 1)
   return (
     <>
       <div
         id={post.id}
-        className='blog hover:bg-purple-50 dark:hover:bg-gray-900 overflow-hidden flex flex-col mx-auto px-5'
+        className='blog hover:bg-red-50 dark:hover:bg-gray-800 overflow-hidden flex flex-col mx-auto px-5'
       >
         <div className='flex flex-col gap-3 p-3 md:p-7 pb-3'>
-          <Link href={`/blog/${year}/${month}/${day}/${post.slug}`}>
-            <a className='font-semibold text-xl md:text-2xl inline-block hover:text-indigo-800 transition duration-500 ease-in-out inline-block mb-2'>
+          <Link href={`${post.link.replace('old.reporterly', 'reporterly')}`}>
+            <a className='font-semibold text-xl md:text-2xl inline-block hover:text-red-800 transition duration-500 ease-in-out inline-block mb-2'>
               <h1 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
             </a>
           </Link>
           <div className='flex justify-between'>
             {post._embedded.author[0].slug && (
               <div className='flex items-center'>
-                <Link href={`/blog/author/${post._embedded.author[0].slug}`}>
+                <Link href={`/author/${post._embedded.author[0].slug}`}>
                   <a>
                     <ImageComponentity
-                      classes='w-10 h-10 rounded-full overflow-hidden ml-2'
+                      classes='w-10 h-10 rounded-full overflow-hidden mr-2'
                       src={
                         post._embedded.author[0].avatar_urls
                           ? encodeURI(post._embedded.author[0].avatar_urls['96'])
                           : 'https://secure.gravatar.com/avatar/5ba47e3ab322d98712c8147821ede32a?s=4896&d=mm&r=g'
                       }
-                      alt={`نویسنده: ` + post._embedded.author[0].name}
+                      alt={`Written By:  ` + post._embedded.author[0].name}
                     />
                   </a>
                 </Link>
                 <div className='text-xs'>
-                  <Link href={`/blog/author/${post._embedded.author[0].slug}`}>
-                    <a className='text-gray-900 dark:text-gray-100 font-semibold leading-none text-xs md:text-sm hover:text-indigo-800 dark:hover:text-indigo-800 transition duration-500 ease-in-out'>
+                  <Link href={`/author/${post._embedded.author[0].slug}`}>
+                    <a className='text-gray-900 dark:text-gray-100 font-semibold leading-none text-xs md:text-sm hover:text-red-800 dark:hover:text-red-800 transition duration-500 ease-in-out'>
                       {post._embedded.author[0].name}
                     </a>
                   </Link>
@@ -53,23 +48,17 @@ function Post({ post }) {
             )}
             <div className='share flex items-center text-gray-600'>
               <div className='mr-1'>
-                <TwitterShareButton
-                  url={`https://khabarnama.net/${year}/${month}/${day}/${post.slug}`}
-                >
+                <TwitterShareButton url={`${post.link.replace('old.reporterly', 'reporterly')}`}>
                   <TwitterIcon size={24} round={false} />
                 </TwitterShareButton>
               </div>
               <div className='mr-1'>
-                <LinkedinShareButton
-                  url={`https://khabarnama.net/${year}/${month}/${day}/${post.slug}`}
-                >
+                <LinkedinShareButton url={`${post.link.replace('old.reporterly', 'reporterly')}`}>
                   <LinkedinIcon size={24} round={false} />
                 </LinkedinShareButton>
               </div>
               <div className='mr-1'>
-                <FacebookShareButton
-                  url={`https://khabarnama.net/${year}/${month}/${day}/${post.slug}`}
-                >
+                <FacebookShareButton url={`${post.link.replace('old.reporterly', 'reporterly')}`}>
                   <FacebookIcon size={24} round={false} />
                 </FacebookShareButton>
               </div>
@@ -92,9 +81,9 @@ function Post({ post }) {
           />
           <div className='text-xs md:text-sm font-regular text-gray-900 dark:text-gray-100 flex mt-4 flex items-center justify-between'>
             <div className='flex overflow-scroll scrollbar-hide'>
-              <span className='ml-3 flex-none flex flex-row items-center'>
+              <span className='mr-3 flex-wrap flex flex-row items-center'>
                 <SVGClock />
-                <span className='mr-1'>{moment(post.date_gmt).locale('fa').format('DD MMMM')}</span>
+                <span className='ml-1'>{moment(post.date_gmt).format('DD MMMM')}</span>
               </span>
               {post._embedded['wp:term'].map((termArray) =>
                 termArray.map(
@@ -102,22 +91,22 @@ function Post({ post }) {
                     index < 2 && (
                       <Link
                         href={
-                          '/blog' +
+                          '' +
                           (term.taxonomy == 'category' ? '/category' : '/tag') +
                           `/${term.slug}`
                         }
                       >
                         <a
-                          className={`mr-1 sm:mr-3 ${
+                          className={`ml-1 sm:ml-3 ${
                             index == 1 ? 'hidden sm:flex' : 'flex'
-                          } flex-none items-center hover:text-indigo-800`}
+                          } flex-none items-center hover:text-red-800`}
                         >
                           {term.taxonomy == 'category' ? (
                             <SVGLifestyle classes='h-5' />
                           ) : (
                             <SVGTag />
                           )}
-                          <span className='mr-1' dangerouslySetInnerHTML={{ __html: term.name }} />
+                          <span className='ml-1' dangerouslySetInnerHTML={{ __html: term.name }} />
                         </a>
                       </Link>
                     )

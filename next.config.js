@@ -7,9 +7,9 @@ module.exports = withPWA({
   },
   images: {
     domains: [
-      'admin.iap.af',
-      'khabarnama.net',
+      'paikaftab.com',
       'old.khabarnama.net',
+      'reporterly.net',
       'www.etilaatroz.com',
       'secure.gravatar.com'
     ]

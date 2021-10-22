@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
-import Infiniteblog from './../../../components/Infiniteblog'
-import ResponsiveArticle from './../../../components/skeleton/ResponsiveArticle'
+import Infiniteblog from '../../components/Infiniteblog'
+import ResponsiveArticle from '../../components/skeleton/ResponsiveArticle'
 
 function Tag({ tag }) {
   const router = useRouter()
@@ -18,14 +18,14 @@ function Tag({ tag }) {
   return (
     <>
       {tag.length === 0 ? (
-        <h1 className='pr-5'>موجود نیست!</h1>
+        <h1 className='pr-5'>NOT FOUND!</h1>
       ) : (
         <>
           {tag.yoast_head_json && (
             <NextSeo
               title={tag.yoast_head_json.og_title}
               description={tag.yoast_head_json.og_description}
-              canonical={`https://khabarnama.net/blog/tag/${tag.slug}`}
+              canonical={`https://reporterly.net/tag/${tag.slug}`}
               robotsProps={{
                 maxSnippet: tag.yoast_head_json.robots['max-snippet'],
                 maxImagePreview: tag.yoast_head_json.robots['max-image-preview'],
@@ -49,7 +49,7 @@ function Tag({ tag }) {
               openGraph={{
                 title: tag.yoast_head_json.og_title,
                 description: tag.yoast_head_json.og_description,
-                url: `https://khabarnama.net/blog/tag/${tag.slug}`,
+                url: `https://reporterly.net/tag/${tag.slug}`,
                 type: tag.yoast_head_json.og_type,
                 locale: tag.yoast_head_json.og_locale,
                 site_name: tag.yoast_head_json.og_site_name,
@@ -63,18 +63,15 @@ function Tag({ tag }) {
                 ]
               }}
               twitter={{
-                handle: '@khabarnamaaf',
-                site: '@khabarnamaaf',
+                handle: '@reporterlyaf',
+                site: '@reporterlyaf',
                 cardType: 'summary_large_image'
-              }}
-              facebook={{
-                appId: '213017455829104'
               }}
             />
           )}
           <header className='px-5'>
             <h1 className='text-xl font-semibold mb-2'>
-              <span className='font-medium'>هشتگ: </span>
+              <span className='font-medium'>Hashtag: </span>
               {tag[0].name}
             </h1>
             <article dangerouslySetInnerHTML={{ __html: tag[0].description }} />
@@ -108,7 +105,7 @@ export async function getStaticPaths() {
 // This also gets called at build time
 export async function getStaticProps({ params }) {
   const { slug } = params
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/tags?slug=${encodeURI(slug)}`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/tags?slug=${slug}`)
   const tag = await res.json()
   if (!tag) {
     return {

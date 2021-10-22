@@ -8,7 +8,7 @@ function LatestStories() {
     'lateststories',
     () =>
       fetch(
-        'https://old.khabarnama.net/wp-json/wp/v2/posts?_fields[]=id&_fields[]=title&_fields[]=slug&_fields[]=date_gmt'
+        'https://reporterly.net/wp-json/wp/v2/posts?categories=22&_fields=id,title,slug,date_gmt,link'
       ).then((res) => res.json()),
     { keepPreviousData: true }
   )
@@ -16,14 +16,12 @@ function LatestStories() {
   if (isLoading) return <NotificationLoader />
 
   if (error)
-    return (
-      <p className='text-indigo-800 font-semibold'>'An error has occurred: ' + error.message</p>
-    )
+    return <p className='text-red-800 font-semibold'>'An error has occurred: ' + error.message</p>
   return (
     <>
-      <div className='border-b border-gray-100 py-5 mr-2 mb-2'>
+      <div className='border-b border-gray-100 py-5 ml-2 mb-2'>
         <div className='flex items-center justify-start gap-2 mb-4'>
-          <h1 className='uppercase font-semibold'>مطالب تازه</h1>
+          <h1 className='uppercase font-semibold'>Latest News</h1>
           {isRefetching && (
             <div className='w-14 flex items-center justify-center'>
               <SmallLoader />

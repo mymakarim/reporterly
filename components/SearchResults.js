@@ -5,18 +5,16 @@ import Link from 'next/link'
 function SearchResults({ s }) {
   const { isLoading, isRefetching, error, data } = useQuery('searchresults', async () =>
     fetch(
-      `https://old.khabarnama.net/wp-json/wp/v2/tags?search=${encodeURI(
+      `https://reporterly.net/wp-json/wp/v2/tags?search=${encodeURI(
         s
-      )}&_fields[]=id&_fields[]=name&_fields[]=slug&orderby=slug&per_page=5`
+      )}&_fields=id,name,slug&orderby=slug&per_page=5`
     ).then((res) => res.json())
   )
 
-  if (isLoading) return <p>درحال جستجو...</p>
+  if (isLoading) return <p>Searching...</p>
 
   if (error)
-    return (
-      <p className='text-indigo-800 font-semibold'>'An error has occurred: ' + error.message</p>
-    )
+    return <p className='text-red-800 font-semibold'>'An error has occurred: ' + error.message</p>
   return (
     <>
       <div className='bg-white'>
@@ -31,13 +29,13 @@ function SearchResults({ s }) {
         </div>
         <ul className=''>
           {!isRefetching && data.length == 0 ? (
-            <p>یافت نشد! لطفا هشتگ دیگری را وارد کنید</p>
+            <p>Not Found! Please try another tag!</p>
           ) : (
             !isRefetching &&
             data.map((post) => (
               <li key={post.id}>
-                <Link href={`/blog/tag/${post.slug}`}>
-                  <a className='block py-2 hover:text-indigo-800 text-semibold'>
+                <Link href={`/tag/${post.slug}`}>
+                  <a className='block py-2 hover:text-red-800 text-semibold'>
                     #{decodeURI(post.slug)}
                   </a>
                 </Link>

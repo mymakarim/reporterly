@@ -5,7 +5,7 @@ export default function SVGArrow({ classes }) {
       fill='currentColor'
       viewBox='0 0 24 24'
       role='img'
-      ariaLabelledby='hashIconTitle'
+      aria-labelledby='hashIconTitle'
       stroke='currentColor'
       strokeWidth='2'
       strokeLinecap='round'

@@ -9,13 +9,10 @@ import Populartags from './Populartags'
 import SearchForm from './SearchForm'
 
 import SVGHome from './../components/SVG/SVGHome'
-import SVGWork from './../components/SVG/SVGWork'
-import SVGLifestyle from './../components/SVG/SVGLifestyle'
-import SVGStar from './../components/SVG/SVGStar'
-import SVGUnlock from './../components/SVG/SVGUnlock'
-import SVGHeart from './../components/SVG/SVGHeart'
 import SVGSearch from './../components/SVG/SVGSearch'
-import SVGDiscovery from './../components/SVG/SVGDiscovery'
+import SVGHumanrights from './../components/SVG/SVGHumanrights'
+import SVGSecurity from './../components/SVG/SVGSecurity'
+import SVGRegional from './../components/SVG/SVGRegional'
 
 import { useTheme } from 'next-themes'
 import SVGSun from './SVG/SVGSun'
@@ -47,7 +44,7 @@ function HeaderClassic() {
                 <a>
                   <ImageComponentity
                     src={theme == 'dark' ? '/icons/logo.png' : '/icons/logo-dark.png'}
-                    classes='h-16 w-24'
+                    classes='h-12 w-64'
                   />
                 </a>
               </Link>
@@ -104,19 +101,13 @@ function HeaderClassic() {
               aria-hidden='true'
             ></div>
 
-            <div className='fixed inset-y-0 left-0 pr-20 max-w-full flex'>
+            <div className='fixed inset-y-0 right-0 pl-20 max-w-full flex'>
               <div className='relative w-screen max-w-md'>
                 <div className='bg-white dark:bg-gray-500 h-full flex flex-col py-6  dark:bg-gray-700 shadow-xl overflow-y-scroll'>
                   <div className='px-4 flex items-center justify-between'>
                     <div className='w-52 lg:w-64 flex-none'>
                       <Link href='/'>
-                        <a>
-                          {theme == 'dark' ? (
-                            <ImageComponentity src='/icons/logo.png' classes='h-16 w-24' />
-                          ) : (
-                            <ImageComponentity src='/icons/logo-dark.png' classes='h-16 w-24' />
-                          )}
-                        </a>
+                        <a>{<ImageComponentity src='/icons/logo.png' classes='h-10 w-54' />}</a>
                       </Link>
                     </div>
                     <div
@@ -134,82 +125,46 @@ function HeaderClassic() {
                             <a
                               className={`${
                                 router.pathname == '/' ? 'text-semibold' : ''
-                              } flex items-center hover:text-indigo-800 p-3 lg:px-5 lg:py-3 hover:bg-indigo-50 transition duration-300 ease-in-out rounded-full`}
+                              } flex items-center hover:text-red-800 p-3 lg:px-5 lg:py-3 hover:bg-red-50 transition duration-300 ease-in-out rounded-full`}
                             >
                               <SVGHome />
-                              <span className='mr-2 '>صفحه نخست</span>
+                              <span className='ml-2 '>Home</span>
                             </a>
                           </Link>
                         </li>
                         <li>
-                          <Link href='/blog/category/work'>
+                          <Link href='/category/security-trends'>
                             <a
                               className={`${
-                                router.pathname == '/blog/category/work' ? 'text-semibold' : ''
-                              } flex items-center hover:text-indigo-800 p-3 lg:px-5 lg:py-3 hover:bg-indigo-50 transition duration-300 ease-in-out rounded-full`}
+                                router.pathname == '/' ? 'text-semibold' : ''
+                              } flex items-center hover:text-red-800 p-3 lg:px-5 lg:py-3 hover:bg-red-50 transition duration-300 ease-in-out rounded-full`}
                             >
-                              <SVGWork />
-                              <span className='mr-2 '>کسب و کار</span>
+                              <SVGSecurity />
+                              <span className='ml-2 '>Security Trends</span>
                             </a>
                           </Link>
                         </li>
                         <li>
-                          <Link href='/blog/category/lifestyle'>
+                          <Link href='/category/regional-dynamics'>
                             <a
                               className={`${
-                                router.pathname == '/blog/category/lifestyle' ? 'text-semibold' : ''
-                              } flex items-center hover:text-indigo-800 p-3 lg:px-5 lg:py-3 hover:bg-indigo-50 transition duration-300 ease-in-out rounded-full`}
+                                router.pathname == '/regional-dynamics' ? 'text-semibold' : ''
+                              } flex items-center hover:text-red-800 p-3 lg:px-5 lg:py-3 hover:bg-red-50 transition duration-300 ease-in-out rounded-full`}
                             >
-                              <SVGLifestyle />
-                              <span className='mr-2'>سبک زندگی</span>
+                              <SVGRegional />
+                              <span className='ml-2 '>Regional Dynamics</span>
                             </a>
                           </Link>
                         </li>
                         <li>
-                          <Link href='/blog/category/success'>
+                          <Link href='/category/human-rights'>
                             <a
                               className={`${
-                                router.pathname == '/blog/category/success' ? 'text-semibold' : ''
-                              } flex items-center hover:text-indigo-800 p-3 lg:px-5 lg:py-3 hover:bg-indigo-50 transition duration-300 ease-in-out rounded-full`}
+                                router.pathname == '/human-rights' ? 'text-semibold' : ''
+                              } flex items-center hover:text-red-800 p-3 lg:px-5 lg:py-3 hover:bg-red-50 transition duration-300 ease-in-out rounded-full`}
                             >
-                              <SVGUnlock />
-                              <span className='mr-2'>موفقیت</span>
-                            </a>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href='/blog/category/health'>
-                            <a
-                              className={`${
-                                router.pathname == '/blog/category/health' ? 'text-semibold' : ''
-                              } flex items-center hover:text-indigo-800 p-3 lg:px-5 lg:py-3 hover:bg-indigo-50 transition duration-300 ease-in-out rounded-full`}
-                            >
-                              <SVGHeart />
-                              <span className='mr-2'>سلامتی</span>
-                            </a>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href='/blog/category/trip'>
-                            <a
-                              className={`${
-                                router.pathname == '/blog/category/trip' ? 'text-semibold' : ''
-                              } flex items-center hover:text-indigo-800 p-3 lg:px-5 lg:py-3 hover:bg-indigo-50 transition duration-300 ease-in-out rounded-full`}
-                            >
-                              <SVGDiscovery />
-                              <span className='mr-2'>سفر و گردشگری</span>
-                            </a>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href='/blog/category/top'>
-                            <a
-                              className={`${
-                                router.pathname == '/blog/category/top' ? 'text-semibold' : ''
-                              } flex items-center hover:text-indigo-800 p-3 lg:px-5 lg:py-3 hover:bg-indigo-50 transition duration-300 ease-in-out rounded-full`}
-                            >
-                              <SVGStar />
-                              <span className='mr-2'>برترین ها</span>
+                              <SVGHumanrights />
+                              <span className='ml-2 '>Human Rights</span>
                             </a>
                           </Link>
                         </li>

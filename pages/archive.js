@@ -17,7 +17,7 @@ function Archive() {
 
 const fetchCategories = async () => {
   const res = await fetch(
-    `https://old.khabarnama.net/wp-json/wp/v2/categories?order=desc&orderby=count&_fields=id,slug,name,count&per_page=100&page=1`
+    `https://reporterly.net/wp-json/wp/v2/categories?order=desc&orderby=count&_fields=id,slug,name,count&per_page=100&page=1`
   )
   const categories = res.json()
   return categories

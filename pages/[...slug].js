@@ -1,15 +1,14 @@
 import { useRouter } from 'next/router'
-import BlogLoader from './../../components/skeleton/BlogLoader'
-import ImageComponentity from './../../components/ImageComponentity'
+import BlogLoader from '../components/skeleton/BlogLoader'
+import ImageComponentity from '../components/ImageComponentity'
 import { FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 'react-share'
 import { FacebookIcon, LinkedinIcon, TwitterIcon } from 'react-share'
-import SVGClock from './../../components/SVG/SVGClock'
-import SVGTag from './../../components/SVG/SVGTag'
-import SVGLifestyle from './../../components/SVG/SVGLifestyle'
+import SVGClock from '../components/SVG/SVGClock'
+import SVGTag from '../components/SVG/SVGTag'
+import SVGLifestyle from '../components/SVG/SVGLifestyle'
 import Link from 'next/link'
 import { NextSeo } from 'next-seo'
 import moment from 'moment'
-import 'moment/locale/fa'
 
 function Blog({ post }) {
   const router = useRouter()
@@ -20,19 +19,14 @@ function Blog({ post }) {
     return <BlogLoader className='w-full' />
   }
 
-  let date = post.date_gmt.split('-')
-  let year = date[0]
-  let month = date[1]
-  let day = date[2].substr(0, 1)
-
   return (
     <>
       {post.yoast_head_json && (
         <NextSeo
           title={post.title.rendered}
           description={post.yoast_head_json.og_description}
-          canonical={`https://khabarnama.net/blog/${year}/${month}/${day}/${post.slug}`}
-          titleTemplate='خبرنامه | %s'
+          canonical={`${post.link.replace('old.reporterly', 'reporterly')}`}
+          titleTemplate='reporterly | %s'
           robotsProps={{
             maxSnippet: post.yoast_head_json.robots['max-snippet'],
             maxImagePreview: post.yoast_head_json.robots['max-image-preview'],
@@ -56,7 +50,7 @@ function Blog({ post }) {
           openGraph={{
             title: post.yoast_head_json.og_title,
             description: post.yoast_head_json.og_description,
-            url: `https://khabarnama.net/${year}/${month}/${day}/${post.slug}`,
+            url: `${post.link.replace('old.reporterly', 'reporterly')}`,
             type: post.yoast_head_json.og_type,
             locale: post.yoast_head_json.og_locale,
             site_name: post.yoast_head_json.og_site_name,
@@ -81,12 +75,9 @@ function Blog({ post }) {
             ]
           }}
           twitter={{
-            handle: '@khabarnamaaf',
-            site: '@khabarnamaaf',
+            handle: '@reporterlyaf',
+            site: '@reporterlyaf',
             cardType: 'summary_large_image'
-          }}
-          facebook={{
-            appId: '213017455829104'
           }}
         />
       )}
@@ -99,22 +90,22 @@ function Blog({ post }) {
           <div className='flex justify-between'>
             {post._embedded.author[0].slug && (
               <div className='flex items-center'>
-                <Link href={`/blog/author/${post._embedded.author[0].slug}`}>
+                <Link href={`/author/${post._embedded.author[0].slug}`}>
                   <a>
                     <ImageComponentity
-                      classes='w-10 h-10 rounded-full overflow-hidden ml-2'
+                      classes='w-10 h-10 rounded-full overflow-hidden mr-2'
                       src={
                         post._embedded.author[0].avatar_urls
                           ? encodeURI(post._embedded.author[0].avatar_urls['96'])
                           : 'https://secure.gravatar.com/avatar/5ba47e3ab322d98712c8147821ede32a?s=4896&d=mm&r=g'
                       }
-                      alt={`نویسنده: ` + post._embedded.author[0].name}
+                      alt={`Written By:  ` + post._embedded.author[0].name}
                     />
                   </a>
                 </Link>
                 <div className='text-xs'>
-                  <Link href={`/blog/author/${post._embedded.author[0].slug}`}>
-                    <a className='text-gray-900 dark:text-gray-100 font-semibold leading-none text-sm hover:text-indigo-800'>
+                  <Link href={`/author/${post._embedded.author[0].slug}`}>
+                    <a className='text-gray-900 dark:text-gray-100 font-semibold leading-none text-sm hover:text-red-800'>
                       {post._embedded.author[0].name}
                     </a>
                   </Link>
@@ -125,19 +116,13 @@ function Blog({ post }) {
               </div>
             )}
             <div className='share flex gap-2 items-center text-gray-600 dark:text-gray-100'>
-              <TwitterShareButton
-                url={`https://khabarnama.net/${year}/${month}/${day}/${post.slug}`}
-              >
+              <TwitterShareButton url={`${post.link.replace('old.reporterly', 'reporterly')}`}>
                 <TwitterIcon size={24} round={false} />
               </TwitterShareButton>
-              <LinkedinShareButton
-                url={`https://khabarnama.net/${year}/${month}/${day}/${post.slug}`}
-              >
+              <LinkedinShareButton url={`${post.link.replace('old.reporterly', 'reporterly')}`}>
                 <LinkedinIcon size={24} round={false} />
               </LinkedinShareButton>
-              <FacebookShareButton
-                url={`https://khabarnama.net/${year}/${month}/${day}/${post.slug}`}
-              >
+              <FacebookShareButton url={`${post.link.replace('old.reporterly', 'reporterly')}`}>
                 <FacebookIcon size={24} round={false} />
               </FacebookShareButton>
             </div>
@@ -156,14 +141,14 @@ function Blog({ post }) {
           <div
             className='text-gray-700 dark:text-gray-300 leading-8 single_content'
             dangerouslySetInnerHTML={{
-              __html: post.content.rendered.replace('old.khabarnama', 'khabarnama')
+              __html: post.content.rendered.replace('old.reporterly', 'reporterly')
             }}
           />
           <div className='text-xs md:text-sm font-regular text-gray-900 dark:text-gray-50 flex mt-4 flex items-center justify-between'>
             <div className='w-full flex overflow-scroll scrollbar-hide'>
-              <span className='ml-5 flex flex-row items-center'>
-                <SVGClock classes='h-5 text-gray-600 dark:text-gray-50' />
-                <span className='mr-1'>{moment(post.date_gmt).locale('fa').format('DD MMMM')}</span>
+              <span className='flex flex-none flex-row items-center'>
+                <SVGClock />
+                <span className='ml-1'>{moment(post.date_gmt).format('DD MMMM')}</span>
               </span>
               {post._embedded['wp:term'].map((termArray) =>
                 termArray.map(
@@ -171,22 +156,22 @@ function Blog({ post }) {
                     index < 4 && (
                       <Link
                         href={
-                          '/blog' +
+                          '' +
                           (term.taxonomy == 'category' ? '/category' : '/tag') +
                           `/${term.slug}`
                         }
                       >
                         <a
-                          className={`mr-1 sm:mr-3 ${
+                          className={`ml-1 sm:ml-3 ${
                             index > 1 ? 'hidden sm:flex' : 'flex'
-                          } flex-none items-center hover:text-indigo-800`}
+                          } flex-none items-center hover:text-red-800`}
                         >
                           {term.taxonomy == 'category' ? (
                             <SVGLifestyle classes='h-5 text-gray-600 dark:text-gray-50' />
                           ) : (
                             <SVGTag classes='h-5 text-gray-600 dark:text-gray-50' />
                           )}
-                          <span className='mr-1' dangerouslySetInnerHTML={{ __html: term.name }} />
+                          <span className='ml-1' dangerouslySetInnerHTML={{ __html: term.name }} />
                         </a>
                       </Link>
                     )
@@ -205,25 +190,13 @@ export async function getStaticPaths() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/posts`)
   const posts = await res.json()
 
-  let date
-  let year
-  let month
-  let day
-
   const slugs = []
   posts.forEach((post) => {
-    date = post.date_gmt.split('-')
-    year = date[0]
-    month = date[1]
-    day = date[2].substr(0, 1)
-    slugs.push({ params: { slug: [year, month, day, post.slug] } })
+    slugs.push({ params: { slug: [post.slug] } })
   })
 
   return {
-    // Only `/pages/1` and `/pages/2` are generated at build time
     paths: slugs,
-    // Enable statically generating additional pages
-    // For example: `/pages/3`
     fallback: 'blocking'
   }
 }
@@ -233,7 +206,7 @@ export async function getStaticProps({ params }) {
   const { slug } = params
 
   const pageRes = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/posts?${args}&slug=${encodeURI(slug[slug.length - 1])}`
+    `${process.env.NEXT_PUBLIC_SITE_URL}/posts?${args}&slug=${slug[slug.length - 1]}`
   )
   const page = await pageRes.json()
   if (!page) {

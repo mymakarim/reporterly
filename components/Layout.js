@@ -1,13 +1,10 @@
 import HeaderClassic from './HeaderClassic'
 import LatestStories from './LatestStories'
 import SVGHome from './../components/SVG/SVGHome'
+import SVGRegional from './../components/SVG/SVGRegional'
+import SVGSecurity from './../components/SVG/SVGSecurity'
+import SVGHumanrights from './../components/SVG/SVGHumanrights'
 import Footer from './Footer'
-import SVGWork from './../components/SVG/SVGWork'
-import SVGLifestyle from './../components/SVG/SVGLifestyle'
-import SVGStar from './../components/SVG/SVGStar'
-import SVGUnlock from './../components/SVG/SVGUnlock'
-import SVGHeart from './../components/SVG/SVGHeart'
-import SVGDiscovery from './../components/SVG/SVGDiscovery'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -19,98 +16,62 @@ export default function Layout({ children }) {
       <HeaderClassic />
       <div className='main grid grid-cols-12 justify-between'>
         <div className='col-span-12 lg:col-span-9 flex'>
-          <div className='hidden lg:relative z-50 lg:inline-block lg:w-72 lg:flex-none lg:border-l border-gray-100'>
-            <div className='lg:sticky lg:top-10 lg:p-8 lg:pt-0 lg:pl-1'>
+          <div className='hidden lg:relative z-50 lg:inline-block lg:w-72 lg:flex-none lg:border-r border-gray-100'>
+            <div className='lg:sticky lg:top-10 lg:p-8 lg:pt-0 lg:pr-1'>
               <ul className='navigationbar lg:my-5 border-y flex flex-row justify-around lg:flex-col text-md'>
                 <li>
                   <Link href='/'>
                     <a
                       className={`${
                         router.pathname == '/' ? 'text-semibold' : ''
-                      } flex items-center hover:text-indigo-800 p-3 lg:px-5 lg:py-3 hover:bg-indigo-50 transition duration-300 ease-in-out rounded-full`}
+                      } flex items-center hover:text-red-800 p-3 lg:px-5 lg:py-3 hover:bg-red-50 transition duration-300 ease-in-out rounded-full`}
                     >
                       <SVGHome classes='text-gray-700 dark:text-gray-200 h-7' />
-                      <span className='mr-2 hidden lg:inline-block'>صفحه نخست</span>
+                      <span className='ml-2 hidden lg:inline-block'>Home</span>
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href='/blog/category/work'>
+                  <Link href='/category/security-trends'>
                     <a
                       className={`${
-                        router.pathname == '/blog/category/work' ? 'text-semibold' : ''
-                      } flex items-center hover:text-indigo-800 p-3 lg:px-5 lg:py-3 hover:bg-indigo-50 transition duration-300 ease-in-out rounded-full`}
+                        router.pathname == '/security-trends' ? 'text-semibold' : ''
+                      } flex items-center hover:text-red-800 p-3 lg:px-5 lg:py-3 hover:bg-red-50 transition duration-300 ease-in-out rounded-full`}
                     >
-                      <SVGWork classes='text-gray-700 dark:text-gray-200 h-7' />
-                      <span className='mr-2 hidden lg:inline-block'>کسب و کار</span>
+                      <SVGSecurity classes='text-gray-700 dark:text-gray-200 h-7' />
+                      <span className='ml-2 hidden lg:inline-block'>Security Trends</span>
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href='/blog/category/lifestyle'>
+                  <Link href='/category/regional-dynamics'>
                     <a
                       className={`${
-                        router.pathname == '/blog.category/lifestyle' ? 'text-semibold' : ''
-                      } flex items-center hover:text-indigo-800 p-3 lg:px-5 lg:py-3 hover:bg-indigo-50 transition duration-300 ease-in-out rounded-full`}
+                        router.pathname == '/regional-dynamics' ? 'text-semibold' : ''
+                      } flex items-center hover:text-red-800 p-3 lg:px-5 lg:py-3 hover:bg-red-50 transition duration-300 ease-in-out rounded-full`}
                     >
-                      <SVGLifestyle classes='text-gray-700 dark:text-gray-200 h-7' />
-                      <span className='mr-2 hidden lg:inline-block'>سبک زندگی</span>
+                      <SVGRegional classes='text-gray-700 dark:text-gray-200 h-7' />
+                      <span className='ml-2 hidden lg:inline-block'>Regional Dynamics</span>
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href='/blog/category/success'>
+                  <Link href='/category/human-rights'>
                     <a
                       className={`${
-                        router.pathname == '/blog/category/success' ? 'text-semibold' : ''
-                      } flex items-center hover:text-indigo-800 p-3 lg:px-5 lg:py-3 hover:bg-indigo-50 transition duration-300 ease-in-out rounded-full`}
+                        router.pathname == '/human-rights' ? 'text-semibold' : ''
+                      } flex items-center hover:text-red-800 p-3 lg:px-5 lg:py-3 hover:bg-red-50 transition duration-300 ease-in-out rounded-full`}
                     >
-                      <SVGUnlock classes='text-gray-700 dark:text-gray-200 h-7' />
-                      <span className='mr-2 hidden lg:inline-block'>موفقیت</span>
-                    </a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href='/blog/category/health'>
-                    <a
-                      className={`${
-                        router.pathname == '/blog/category/health' ? 'text-semibold' : ''
-                      } flex items-center hover:text-indigo-800 p-3 lg:px-5 lg:py-3 hover:bg-indigo-50 transition duration-300 ease-in-out rounded-full`}
-                    >
-                      <SVGHeart classes='text-gray-700 dark:text-gray-200 h-7' />
-                      <span className='mr-2 hidden lg:inline-block'>سلامتی</span>
-                    </a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href='/blog/category/trip'>
-                    <a
-                      className={`${
-                        router.pathname == '/blog/category/trip' ? 'text-semibold' : ''
-                      } flex items-center hover:text-indigo-800 p-3 lg:px-5 lg:py-3 hover:bg-indigo-50 transition duration-300 ease-in-out rounded-full`}
-                    >
-                      <SVGDiscovery classes='text-gray-700 dark:text-gray-200 h-7' />
-                      <span className='mr-2 hidden lg:inline-block'>سفر و گردشگری</span>
-                    </a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href='/blog/category/top'>
-                    <a
-                      className={`${
-                        router.pathname == '/blog/category/top' ? 'text-semibold' : ''
-                      } flex items-center hover:text-indigo-800 p-3 lg:px-5 lg:py-3 hover:bg-indigo-50 transition duration-300 ease-in-out rounded-full`}
-                    >
-                      <SVGStar classes='text-gray-700 dark:text-gray-200 h-7' />
-                      <span className='mr-2 hidden lg:inline-block'>برترین ها</span>
+                      <SVGHumanrights classes='text-gray-700 dark:text-gray-200 h-7' />
+                      <span className='ml-2 hidden lg:inline-block'>Human Rights</span>
                     </a>
                   </Link>
                 </li>
               </ul>
-              <div className='mr-4 mt-4 mb-12 hidden lg:inline-block'>
+              <div className='ml-4 mt-4 mb-12 hidden lg:inline-block'>
                 <Link href='/archive'>
-                  <a className='text-center px-7 py-3 bg-indigo-700 text-white rounded-full shadow-md hover:bg-indigo-800 transition duration-300 ease-in-out'>
-                    مشاهده آرشیف
+                  <a className='text-center px-7 py-3 bg-red-700 text-white rounded-full shadow-md hover:bg-red-800 transition duration-300 ease-in-out'>
+                    Archive
                   </a>
                 </Link>
               </div>
@@ -120,10 +81,10 @@ export default function Layout({ children }) {
           <div className='flex-grow flex flex-col'>{children}</div>
         </div>
 
-        <div className='hidden lg:block relative col-span-3 pl-5 scrollbar-hide h-screen overflow-y-scroll sticky top-0'>
+        <div className='hidden lg:block relative col-span-3 pr-5 scrollbar-hide h-screen overflow-y-scroll sticky top-0'>
           <LatestStories key={'lateststories'} />
           <div className='border-b border-gray-100 py-5 mb-2'>
-            <h1 className='uppercase font-semibold mb-3'>تبلیغات</h1>
+            <h1 className='uppercase font-semibold mb-3'>Ads</h1>
             <img className='w-full' src='https://paikaftab.com/wp-content/uploads/2021/09/Ad.png' />
           </div>
         </div>

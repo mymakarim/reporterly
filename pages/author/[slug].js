@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
-import Infiniteblog from './../../../components/Infiniteblog'
-import ResponsiveArticle from './../../../components/skeleton/ResponsiveArticle'
+import Infiniteblog from '../../components/Infiniteblog'
+import ResponsiveArticle from '../../components/skeleton/ResponsiveArticle'
 import { NextSeo } from 'next-seo'
 
 function Author({ author }) {
@@ -19,14 +19,14 @@ function Author({ author }) {
   return (
     <>
       {author.length === 0 ? (
-        <h1 className='pr-5'>نویسنده مورد نظر موجود نیست!</h1>
+        <h1 className='pr-5'>NOT FOUND!</h1>
       ) : (
         <>
           {author.yoast_head_json && (
             <NextSeo
               title={author.yoast_head_json.og_title}
               description={author.yoast_head_json.og_description}
-              canonical={`https://khabarnama.net/blog/author/${author.slug}`}
+              canonical={`https://reporterly.net/author/${author.slug}`}
               robotsProps={{
                 maxSnippet: author.yoast_head_json.robots['max-snippet'],
                 maxImagePreview: author.yoast_head_json.robots['max-image-preview'],
@@ -49,7 +49,7 @@ function Author({ author }) {
               ]}
               openGraph={{
                 title: author.yoast_head_json.og_title,
-                url: `https://khabarnama.net/blog/author/${author.slug}`,
+                url: `https://reporterly.net/author/${author.slug}`,
                 locale: author.yoast_head_json.og_locale,
                 site_name: author.yoast_head_json.og_site_name,
                 type: 'profile',
@@ -65,18 +65,15 @@ function Author({ author }) {
                 ]
               }}
               twitter={{
-                handle: '@khabarnamaaf',
-                site: '@khabarnamaaf',
+                handle: '@reporterlyaf',
+                site: '@reporterlyaf',
                 cardType: 'summary_large_image'
-              }}
-              facebook={{
-                appId: '213017455829104'
               }}
             />
           )}
           <header className='px-5'>
             <h1 className='text-xl font-semibold mb-2'>
-              <span className='font-medium'>نویسنده: </span>
+              <span className='font-medium'>Written By: </span>
               {author[0].name}
             </h1>
             <article dangerouslySetInnerHTML={{ __html: author[0].description }} />

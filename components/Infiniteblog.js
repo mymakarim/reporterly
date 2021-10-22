@@ -29,7 +29,7 @@ export default function Infinteblog({ type, type_id }) {
         !type_id ? 'projects' : `${type + type_id}`,
         () =>
           fetch(
-            `https://old.khabarnama.net/wp-json/wp/v2/posts?_embed=true&per_page=10${args}&page=${
+            `https://reporterly.net/wp-json/wp/v2/posts?_embed=true&per_page=10${args}&page=${
               page + 1
             }`
           ).then((res) => res.json()),
@@ -42,11 +42,11 @@ export default function Infinteblog({ type, type_id }) {
     // console.log('PAGE: ', page)
     // console.log(
     //   'URL: ',
-    //   `https://old.khabarnama.net/wp-json/wp/v2/posts?_embed=true${args}&per_page=10&page=` +
+    //   `https://reporterly.net/wp-json/wp/v2/posts?_embed=true${args}&per_page=10&page=` +
     //     (page == null ? 1 : page)
     // )
     const res = await fetch(
-      `https://old.khabarnama.net/wp-json/wp/v2/posts?_embed=true${args}&per_page=10&page=` +
+      `https://reporterly.net/wp-json/wp/v2/posts?_embed=true${args}&per_page=10&page=` +
         (page == null ? 1 : page)
     )
     const totalPages = res.headers.get('X-WP-TotalPages')
@@ -80,7 +80,7 @@ export default function Infinteblog({ type, type_id }) {
   return isLoading ? (
     <BlogLoader className='z-0 pl-5 md:pl-0 pr-5 w-full' />
   ) : status === 'error' ? (
-    <p className='z-0 my-5 text-center text-indigo-800 font-semibold'>Error: {error.message}</p>
+    <p className='z-0 my-5 text-center text-red-800 font-semibold'>Error: {error.message}</p>
   ) : (
     <div className='z-0 relative'>
       {isRefetching && (
@@ -95,15 +95,11 @@ export default function Infinteblog({ type, type_id }) {
       {data.pages.map((post, i) => post.map((postitem, i) => <Post post={postitem} />))}
       <div className='flex items-center justify-center my-5'>
         <button
-          className='rounded-full text-sm md:text-base px-6 py-2 bg-indigo-700 text-white hover:bg-indigo-800'
+          className='rounded-full text-sm md:text-base px-6 py-2 bg-red-700 text-white hover:bg-red-800'
           onClick={() => fetchNextPage()}
           disabled={!hasNextPage || isFetchingNextPage}
         >
-          {isFetchingNextPage
-            ? 'منتظر باشید...'
-            : hasNextPage
-            ? 'بارگزاری بیشتر'
-            : 'بیشتر موجود نیست!'}
+          {isFetchingNextPage ? 'Loading...' : hasNextPage ? 'Load more' : 'NOT FOUND!'}
         </button>
       </div>
     </div>
