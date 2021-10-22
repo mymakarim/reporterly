@@ -6,7 +6,7 @@ function PostSmall({ post }) {
   let month = date[1]
   let day = date[2].substr(0, 1)
   return (
-    <Link key={post.id} href={`${post.link.replace('old.reporterly', 'reporterly')}`}>
+    <Link key={post.id} href={`${post.link.replace('reporterly.net', 'reporterly.vercel.app')}`}>
       <a id={post.id} className='dark:text-gray-400 dark:hover:text-red-800 hover:text-red-800'>
         <li
           className='relative pl-6 pb-2 pt-2 transition duration-300 ease-in-out'

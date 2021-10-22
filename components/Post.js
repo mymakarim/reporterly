@@ -15,7 +15,7 @@ function Post({ post }) {
         className='blog hover:bg-red-50 dark:hover:bg-gray-800 overflow-hidden flex flex-col mx-auto px-5'
       >
         <div className='flex flex-col gap-3 p-3 md:p-7 pb-3'>
-          <Link href={`${post.link.replace('old.reporterly', 'reporterly')}`}>
+          <Link href={`${post.link.replace('reporterly.net', 'reporterly.vercel.app')}`}>
             <a className='font-semibold text-xl md:text-2xl inline-block hover:text-red-800 transition duration-500 ease-in-out inline-block mb-2'>
               <h1 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
             </a>
@@ -48,17 +48,17 @@ function Post({ post }) {
             )}
             <div className='share flex items-center text-gray-600'>
               <div className='mr-1'>
-                <TwitterShareButton url={`${post.link.replace('old.reporterly', 'reporterly')}`}>
+                <TwitterShareButton url={`${post.link.replace('reporterly.net', 'reporterly.vercel.app')}`}>
                   <TwitterIcon size={24} round={false} />
                 </TwitterShareButton>
               </div>
               <div className='mr-1'>
-                <LinkedinShareButton url={`${post.link.replace('old.reporterly', 'reporterly')}`}>
+                <LinkedinShareButton url={`${post.link.replace('reporterly.net', 'reporterly.vercel.app')}`}>
                   <LinkedinIcon size={24} round={false} />
                 </LinkedinShareButton>
               </div>
               <div className='mr-1'>
-                <FacebookShareButton url={`${post.link.replace('old.reporterly', 'reporterly')}`}>
+                <FacebookShareButton url={`${post.link.replace('reporterly.net', 'reporterly.vercel.app')}`}>
                   <FacebookIcon size={24} round={false} />
                 </FacebookShareButton>
               </div>

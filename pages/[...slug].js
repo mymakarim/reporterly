@@ -25,7 +25,7 @@ function Blog({ post }) {
         <NextSeo
           title={post.title.rendered}
           description={post.yoast_head_json.og_description}
-          canonical={`${post.link.replace('old.reporterly', 'reporterly')}`}
+          canonical={`${post.link.replace('reporterly.net', 'reporterly.vercel.app')}`}
           titleTemplate='reporterly | %s'
           robotsProps={{
             maxSnippet: post.yoast_head_json.robots['max-snippet'],
@@ -50,7 +50,7 @@ function Blog({ post }) {
           openGraph={{
             title: post.yoast_head_json.og_title,
             description: post.yoast_head_json.og_description,
-            url: `${post.link.replace('old.reporterly', 'reporterly')}`,
+            url: `${post.link.replace('reporterly.net', 'reporterly.vercel.app')}`,
             type: post.yoast_head_json.og_type,
             locale: post.yoast_head_json.og_locale,
             site_name: post.yoast_head_json.og_site_name,
@@ -116,13 +116,13 @@ function Blog({ post }) {
               </div>
             )}
             <div className='share flex gap-2 items-center text-gray-600 dark:text-gray-100'>
-              <TwitterShareButton url={`${post.link.replace('old.reporterly', 'reporterly')}`}>
+              <TwitterShareButton url={`${post.link.replace('reporterly.net', 'reporterly.vercel.app')}`}>
                 <TwitterIcon size={24} round={false} />
               </TwitterShareButton>
-              <LinkedinShareButton url={`${post.link.replace('old.reporterly', 'reporterly')}`}>
+              <LinkedinShareButton url={`${post.link.replace('reporterly.net', 'reporterly.vercel.app')}`}>
                 <LinkedinIcon size={24} round={false} />
               </LinkedinShareButton>
-              <FacebookShareButton url={`${post.link.replace('old.reporterly', 'reporterly')}`}>
+              <FacebookShareButton url={`${post.link.replace('reporterly.net', 'reporterly.vercel.app')}`}>
                 <FacebookIcon size={24} round={false} />
               </FacebookShareButton>
             </div>
@@ -141,7 +141,7 @@ function Blog({ post }) {
           <div
             className='text-gray-700 dark:text-gray-300 leading-8 single_content'
             dangerouslySetInnerHTML={{
-              __html: post.content.rendered.replace('old.reporterly', 'reporterly')
+              __html: post.content.rendered.replace('reporterly.net', 'reporterly.vercel.app')
             }}
           />
           <div className='text-xs md:text-sm font-regular text-gray-900 dark:text-gray-50 flex mt-4 flex items-center justify-between'>

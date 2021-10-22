@@ -88,7 +88,7 @@ function Page({ post }) {
           <div
             className='text-gray-700 dark:text-gray-50 leading-8 single_content'
             dangerouslySetInnerHTML={{
-              __html: post.content.rendered.replace('old.reporterly', 'reporterly')
+              __html: post.content.rendered.replace('reporterly.net', 'reporterly.vercel.app')
             }}
           />
         </div>
