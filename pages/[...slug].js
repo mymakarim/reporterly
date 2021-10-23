@@ -116,13 +116,19 @@ function Blog({ post }) {
               </div>
             )}
             <div className='share flex gap-2 items-center text-gray-600 dark:text-gray-100'>
-              <TwitterShareButton url={`${post.link.replace('reporterly.net', 'reporterly.vercel.app')}`}>
+              <TwitterShareButton
+                url={`${post.link.replace('reporterly.net', 'reporterly.vercel.app')}`}
+              >
                 <TwitterIcon size={24} round={false} />
               </TwitterShareButton>
-              <LinkedinShareButton url={`${post.link.replace('reporterly.net', 'reporterly.vercel.app')}`}>
+              <LinkedinShareButton
+                url={`${post.link.replace('reporterly.net', 'reporterly.vercel.app')}`}
+              >
                 <LinkedinIcon size={24} round={false} />
               </LinkedinShareButton>
-              <FacebookShareButton url={`${post.link.replace('reporterly.net', 'reporterly.vercel.app')}`}>
+              <FacebookShareButton
+                url={`${post.link.replace('reporterly.net', 'reporterly.vercel.app')}`}
+              >
                 <FacebookIcon size={24} round={false} />
               </FacebookShareButton>
             </div>
@@ -219,8 +225,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       post
-    },
-    revalidate: 43200
+    }
   }
 }
 
