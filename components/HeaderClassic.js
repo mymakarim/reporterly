@@ -18,6 +18,7 @@ import { useTheme } from 'next-themes'
 import SVGSun from './SVG/SVGSun'
 import SVGMoon from './SVG/SVGMoon'
 import { useRouter } from 'next/router'
+import Footer from './Footer'
 
 function HeaderClassic() {
   const router = useRouter()
@@ -118,7 +119,7 @@ function HeaderClassic() {
                     </div>
                   </div>
                   <div className='mt-6 relative flex-1 px-4 sm:px-6'>
-                    <div className='absolute inset-0 px-4 sm:px-6'>
+                    <div className='absolute inset-0 px-4 sm:px-6 flex flex-col items-start justify-between'>
                       <ul className='navigationbar lg:my-5 border-y flex flex-col text-md'>
                         <li>
                           <Link href='/'>
@@ -169,6 +170,7 @@ function HeaderClassic() {
                           </Link>
                         </li>
                       </ul>
+                      <Footer />
                     </div>
                   </div>
                 </div>

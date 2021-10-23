@@ -187,6 +187,18 @@ function Blog({ post }) {
           </div>
         </div>
       </div>
+      <div className='ad p-5 hover:bg-red-50 dark:hover:bg-gray-900'>
+        <Link href='https://codenawis.com/'>
+          <a target='_blank' rel='noopener'>
+            <ImageComponentity
+              src='/ads.png'
+              classes={'relative w-full h-28 sm:h-32 md:h-72'}
+              alt='CodeNawis - website design and development'
+              title='CodeNawis - website design and development'
+            />
+          </a>
+        </Link>
+      </div>
     </>
   )
 }
